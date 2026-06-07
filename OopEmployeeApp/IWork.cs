@@ -1,0 +1,4 @@
+interface IWork
+{
+    void Work();
+}
