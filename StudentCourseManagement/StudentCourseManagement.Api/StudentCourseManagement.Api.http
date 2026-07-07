@@ -1,0 +1,19 @@
+@StudentCourseManagement.Api_HostAddress = http://localhost:5075
+
+POST {{StudentCourseManagement.Api_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@studentcms.com",
+  "password": "Admin@123"
+}
+
+###
+
+@token = paste-token-here
+
+GET {{StudentCourseManagement.Api_HostAddress}}/api/dashboard/stats
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###

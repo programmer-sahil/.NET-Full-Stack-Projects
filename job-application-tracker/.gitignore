@@ -1,0 +1,52 @@
+# Build output
+bin/
+obj/
+dist/
+dist-ssr/
+build/
+publish/
+
+# .NET / NuGet
+*.user
+*.suo
+*.rsuser
+*.nupkg
+*.snupkg
+packages/
+project.assets.json
+
+# Node / Vite
+node_modules/
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+appsettings.*.local.json
+
+# Local SQLite databases
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Logs, tests, coverage
+logs/
+*.log
+TestResults/
+coverage/
+
+# IDE and OS files
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db

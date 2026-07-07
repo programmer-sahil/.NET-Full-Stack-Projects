@@ -1,226 +1,189 @@
-# CSharpPractice
+# .NET Full-Stack Portfolio Projects
 
-This repository contains beginner-friendly C#, OOP, SQL, and ASP.NET Core Web API projects.
-
-It is organized as a learning path: start with C# fundamentals, move to OOP, practice SQL, then build CRUD APIs using ASP.NET Core and Entity Framework Core.
+Professional full-stack .NET projects built for fresher-level portfolio, resume, and interview preparation. The repository currently contains two complete applications with ASP.NET Core Web API backends and React + Vite frontends.
 
 ## Projects
 
-```text
-CSharpPractice/
-|-- CSharp/
-|-- OopEmployeeApp/
-|-- SQLiteProject/
-|-- ProductApi/
-|-- EmployeeEfApi/
-|-- EmployeeCrudApi/
-|-- CSharpPractice.sln
-|-- .gitignore
-|-- .editorconfig
-|-- .gitattributes
-`-- README.md
-```
-
-## Project Summary
-
-| Project | Type | Purpose |
+| Project | Description | Main Skills Demonstrated |
 | --- | --- | --- |
-| `CSharp` | Console app | Practice C# basics, loops, functions, arrays, strings, and interview problems |
-| `OopEmployeeApp` | Console app | Practice OOP concepts using employee classes |
-| `SQLiteProject` | SQL project | Practice tables, keys, joins, CRUD queries, and grouping |
-| `ProductApi` | ASP.NET Core Web API | Practice REST API CRUD using in-memory data |
-| `EmployeeEfApi` | ASP.NET Core Web API | Practice EF Core CRUD with SQLite |
-| `EmployeeCrudApi` | ASP.NET Core Web API | Practice database-backed employee CRUD with validation |
+| [Student Course Management System](./StudentCourseManagement/README.md) | Admin dashboard to manage students, courses, and enrollments. | JWT auth, role-based authorization, EF Core relationships, DTOs, service/repository layers, React protected routes |
+| [Job Application Tracker](./job-application-tracker/README.md) | Personal job tracking system for applications, interview stages, and dashboard analytics. | User authentication, per-user data access, CRUD APIs, filtering/search, dashboard metrics, responsive React UI |
+
+## Tech Stack
+
+Backend:
+- ASP.NET Core Web API
+- C#
+- Entity Framework Core
+- SQLite
+- JWT Bearer Authentication
+- Swagger / OpenAPI
+- DTOs, services, repositories, LINQ
+
+Frontend:
+- React
+- Vite
+- React Router DOM
+- Axios
+- Tailwind CSS
+- Lucide React icons
+- Protected routes and dashboard layouts
+
+Tooling:
+- .NET SDK
+- Node.js and npm
+- EF Core CLI
+- Git and GitHub
+
+## Repository Structure
+
+```text
+.NET-Full-Stack-Projects/
+├── StudentCourseManagement/
+│   ├── StudentCourseManagement.Api/
+│   ├── StudentCourseManagement.Client/
+│   ├── INTERVIEW_NOTES.md
+│   └── README.md
+├── job-application-tracker/
+│   ├── backend/JobTracker.Api/
+│   ├── frontend/
+│   └── README.md
+├── .gitignore
+└── README.md
+```
 
 ## Requirements
 
 - .NET SDK 10 or later
-- SQLite CLI for `SQLiteProject`
+- Node.js 20 or later
+- npm
+- EF Core CLI
 - VS Code or Visual Studio
-- Git
 
-Check .NET:
+Check installed versions:
 
 ```bash
 dotnet --version
+node --version
+npm --version
+dotnet ef --version
 ```
 
-Check SQLite:
+Install EF Core CLI if needed:
 
 ```bash
-sqlite3 --version
+dotnet tool install --global dotnet-ef
 ```
 
-## Solution File
+## Quick Start
 
-The repository contains:
+### Student Course Management System
+
+Backend:
+
+```bash
+cd StudentCourseManagement
+dotnet restore
+dotnet ef database update --project StudentCourseManagement.Api --startup-project StudentCourseManagement.Api
+dotnet run --project StudentCourseManagement.Api --launch-profile http
+```
+
+Frontend:
+
+```bash
+cd StudentCourseManagement/StudentCourseManagement.Client
+npm install
+cp .env.example .env
+npm run dev
+```
+
+Default admin:
 
 ```text
-CSharpPractice.sln
+Email: admin@studentcms.com
+Password: Admin@123
 ```
 
-This solution includes the C# console projects and ASP.NET Core API projects.
+### Job Application Tracker
 
-Build a single project:
+Backend:
 
 ```bash
-dotnet build ProductApi/ProductApi.csproj
-dotnet build EmployeeEfApi/EmployeeEfApi.csproj
-dotnet build EmployeeCrudApi/EmployeeCrudApi.csproj
-```
-
-Run a single project:
-
-```bash
-dotnet run --project ProductApi/ProductApi.csproj
-dotnet run --project EmployeeEfApi/EmployeeEfApi.csproj
-dotnet run --project EmployeeCrudApi/EmployeeCrudApi.csproj
-```
-
-## Run Each Project
-
-### CSharp
-
-```bash
-cd CSharp
-dotnet run
-```
-
-### OopEmployeeApp
-
-```bash
-cd OopEmployeeApp
-dotnet run
-```
-
-### SQLiteProject
-
-```bash
-cd SQLiteProject
-sqlite3 student_course.db < student_course_project.sql
-sqlite3 student_course.db
-```
-
-### ProductApi
-
-```bash
-cd ProductApi
-dotnet run
-```
-
-Swagger:
-
-```text
-http://localhost:5098/swagger
-```
-
-### EmployeeEfApi
-
-```bash
-cd EmployeeEfApi
+cd job-application-tracker/backend/JobTracker.Api
+dotnet restore
 dotnet ef database update
-dotnet run
+dotnet run --launch-profile http
 ```
 
-Swagger:
-
-```text
-http://localhost:5296/swagger
-```
-
-### EmployeeCrudApi
+Frontend:
 
 ```bash
-cd EmployeeCrudApi
-dotnet ef database update
-dotnet run
+cd job-application-tracker/frontend
+npm install
+cp .env.example .env
+npm run dev
 ```
 
-Swagger:
+Register a new user from the app or use the `/api/auth/register` endpoint.
 
-```text
-http://localhost:5040/swagger
-```
+## Useful Local URLs
 
-## API Endpoints Overview
+| Project | Frontend | API | Swagger |
+| --- | --- | --- | --- |
+| Student Course Management System | `http://localhost:5173` | `http://localhost:5075` | `http://localhost:5075/swagger` |
+| Job Application Tracker | `http://localhost:5173` | `http://localhost:5000` | `http://localhost:5000/swagger` |
 
-### ProductApi
+If a port is already in use, Vite may start on `5174`. Both APIs allow `localhost` and `127.0.0.1` on `5173` and `5174` for local CORS.
 
-Base URL:
+## Verification Commands
 
-```text
-http://localhost:5098
-```
-
-| Method | Endpoint |
-| --- | --- |
-| GET | `/api/products` |
-| GET | `/api/products/{id}` |
-| POST | `/api/products` |
-| PUT | `/api/products/{id}` |
-| DELETE | `/api/products/{id}` |
-
-### EmployeeEfApi
-
-Base URL:
-
-```text
-http://localhost:5296
-```
-
-| Method | Endpoint |
-| --- | --- |
-| GET | `/api/employees` |
-| GET | `/api/employees/{id}` |
-| POST | `/api/employees` |
-| PUT | `/api/employees/{id}` |
-| DELETE | `/api/employees/{id}` |
-
-### EmployeeCrudApi
-
-Base URL:
-
-```text
-http://localhost:5040
-```
-
-| Method | Endpoint |
-| --- | --- |
-| GET | `/api/employees` |
-| GET | `/api/employees/{id}` |
-| POST | `/api/employees` |
-| PUT | `/api/employees/{id}` |
-| DELETE | `/api/employees/{id}` |
-
-## Learning Path
-
-1. Practice C# syntax and problem solving in `CSharp`.
-2. Learn classes, inheritance, interfaces, and polymorphism in `OopEmployeeApp`.
-3. Learn relational database basics in `SQLiteProject`.
-4. Learn simple Web API CRUD in `ProductApi`.
-5. Learn EF Core with SQLite in `EmployeeEfApi`.
-6. Practice a more complete employee CRUD API in `EmployeeCrudApi`.
-7. Add DTOs, services, validation attributes, authentication, and tests.
-
-## GitHub Notes
-
-Generated folders should not be pushed:
-
-- `bin/`
-- `obj/`
-
-Database files like `employees.db` and `student_course.db` are learning/demo files. You can keep them for practice projects, but in professional projects databases are usually not committed.
-
-Push to GitHub:
+Run these before pushing:
 
 ```bash
-git init
+# Student Course Management API
+dotnet build StudentCourseManagement/StudentCourseManagement.slnx
+
+# Student Course Management frontend
+cd StudentCourseManagement/StudentCourseManagement.Client
+npm run lint
+npm run build
+npm audit --audit-level=moderate
+cd ../..
+
+# Job Application Tracker API
+dotnet build job-application-tracker/backend/JobTracker.Api/JobTracker.Api.csproj
+
+# Job Application Tracker frontend
+cd job-application-tracker/frontend
+npm run lint
+npm run build
+npm audit --audit-level=moderate
+```
+
+## GitHub Push Checklist
+
+- Do not commit generated folders such as `bin/`, `obj/`, `node_modules/`, or `dist/`.
+- Do not commit local database files such as `*.db`, `*.db-wal`, or `*.db-shm`.
+- Keep `.env.example` files committed, but keep real `.env` files ignored.
+- Add screenshots to each project README after running the apps locally.
+- Run build/lint commands before creating a final commit.
+
+Suggested first commit:
+
+```bash
 git add .
-git commit -m "Add C# practice projects and APIs"
+git commit -m "Add full-stack .NET portfolio projects"
 git branch -M main
 git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
 git push -u origin main
 ```
 
-Replace `YOUR_USERNAME` and `YOUR_REPOSITORY_NAME` with your real GitHub details.
+## Portfolio Positioning
 
+These projects are designed to show practical, interview-friendly full-stack ability:
+- Building REST APIs with clean controller/service/repository separation
+- Designing relational models with EF Core
+- Implementing JWT authentication and protected endpoints
+- Connecting a React frontend to a secured API
+- Managing state, forms, validation, loading states, error states, and responsive layouts
+- Writing professional setup documentation for GitHub
